@@ -1,0 +1,45 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "jhtestapp",
+    "packageName": "it.maraschi.testapp",
+    "packageFolder": "it/maraschi/testapp",
+    "serverPort": 8080,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "oracle",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "protractor"
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "it"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "6.0.0",
+    "jwtSecretKey": "Njc4Nzg4NjE0OWMyMTE0YTUzZDdlYmVkM2M0NmI5NmU0ZTMyNjBiZDM0MzdkZWUzZTZiOWIwM2MxY2M0NTI1Yzc5NGNhZTc0M2VlZjU5ZTEyYWU4MzhjYjM0NGNlM2FkNTEwN2Y1ZjdkN2ViNTZkZmNhMzQ4YTBjMWFmODYwYTI=",
+    "clientTheme": "none",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "dandymi",
+  "repository-name": "jhtestapp"
+}
