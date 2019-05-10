@@ -1,0 +1,11 @@
+{
+  "jhtestappApp": {
+    "ClientAction": {
+      "null": "",
+      "FIRST_MAIL": "FIRST_MAIL",
+      "SECOND_MAIL": "SECOND_MAIL",
+      "CALL": "CALL",
+      "REJECT": "REJECT"
+    }
+  }
+}

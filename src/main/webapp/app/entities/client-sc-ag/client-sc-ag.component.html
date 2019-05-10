@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhtestappApp.client.home.title">Clients</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-client-sc-ag" [routerLink]="['/client-sc-ag/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhtestappApp.client.home.createLabel">
+            Create new Client
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="clients">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="denomination"><span jhiTranslate="jhtestappApp.client.denomination">Denomination</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vatCode"><span jhiTranslate="jhtestappApp.client.vatCode">Vat Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="webSite"><span jhiTranslate="jhtestappApp.client.webSite">Web Site</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="notes"><span jhiTranslate="jhtestappApp.client.notes">Notes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateAdded"><span jhiTranslate="jhtestappApp.client.dateAdded">Date Added</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateExpire"><span jhiTranslate="jhtestappApp.client.dateExpire">Date Expire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="state"><span jhiTranslate="jhtestappApp.client.state">State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dateState"><span jhiTranslate="jhtestappApp.client.dateState">Date State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="notesState"><span jhiTranslate="jhtestappApp.client.notesState">Notes State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sCAgentId"><span jhiTranslate="jhtestappApp.client.sCAgent">S C Agent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="callId"><span jhiTranslate="jhtestappApp.client.call">Call</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let client of clients ;trackBy: trackId">
+                <td><a [routerLink]="['/client-sc-ag', client.id, 'view' ]">{{client.id}}</a></td>
+                <td>{{client.denomination}}</td>
+                <td>{{client.vatCode}}</td>
+                <td>{{client.webSite}}</td>
+                <td>{{client.notes}}</td>
+                <td>{{client.dateAdded | date:'mediumDate'}}</td>
+                <td>{{client.dateExpire | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'jhtestappApp.ClientState.' + client.state}}">{{client.state}}</td>
+                <td>{{client.dateState | date:'mediumDate'}}</td>
+                <td>{{client.notesState}}</td>
+                <td>
+                    <div *ngIf="client.sCAgentId">
+                        <a [routerLink]="['../sc-agent-sc-ag', client.sCAgentId , 'view' ]" >{{client.sCAgentId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="client.callId">
+                        <a [routerLink]="['../call-sc-ag', client.callId , 'view' ]" >{{client.callId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/client-sc-ag', client.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/client-sc-ag', client.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'client-sc-ag', { outlets: { popup: client.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

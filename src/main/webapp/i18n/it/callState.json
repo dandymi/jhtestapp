@@ -1,0 +1,12 @@
+{
+  "jhtestappApp": {
+    "CallState": {
+      "null": "",
+      "NEW": "NEW",
+      "WAITING": "WAITING",
+      "POS_CLOSED": "POS_CLOSED",
+      "NEG_CLOSED": "NEG_CLOSED",
+      "MANAGING": "MANAGING"
+    }
+  }
+}

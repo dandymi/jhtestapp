@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="call">
+            <h2><span jhiTranslate="jhtestappApp.call.detail.title">Call</span> {{call.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhtestappApp.call.dateCall">Date Call</span></dt>
+                <dd>
+                    <span>{{call.dateCall}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.call.stateCall">State Call</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhtestappApp.CallState.' + call.stateCall}}">{{call.stateCall}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/call-sc-ag', call.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

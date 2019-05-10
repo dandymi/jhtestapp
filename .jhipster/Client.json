@@ -1,0 +1,78 @@
+{
+    "name": "Client",
+    "fields": [
+        {
+            "fieldName": "denomination",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vatCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "webSite",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateAdded",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateExpire",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "ClientState",
+            "fieldValues": "EVALUATING,APPROVED,NOT_APPROVED,ARCHIVED"
+        },
+        {
+            "fieldName": "dateState",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "notesState",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "sCAgent",
+            "otherEntityName": "sCAgent",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "call",
+            "otherEntityRelationshipName": "client",
+            "relationshipName": "call",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190510074911",
+    "javadoc": "Client entity.\n@author DM",
+    "entityTableName": "client",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "scAg"
+}

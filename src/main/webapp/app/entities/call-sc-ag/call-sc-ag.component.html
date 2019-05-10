@@ -1,0 +1,56 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhtestappApp.call.home.title">Calls</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-call-sc-ag" [routerLink]="['/call-sc-ag/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhtestappApp.call.home.createLabel">
+            Create new Call
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="calls">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhtestappApp.call.dateCall">Date Call</span></th>
+            <th><span jhiTranslate="jhtestappApp.call.stateCall">State Call</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let call of calls ;trackBy: trackId">
+                <td><a [routerLink]="['/call-sc-ag', call.id, 'view' ]">{{call.id}}</a></td>
+                <td>{{call.dateCall | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'jhtestappApp.CallState.' + call.stateCall}}">{{call.stateCall}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/call-sc-ag', call.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/call-sc-ag', call.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'call-sc-ag', { outlets: { popup: call.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

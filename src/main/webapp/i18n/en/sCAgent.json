@@ -1,0 +1,28 @@
+{
+  "jhtestappApp": {
+    "sCAgent": {
+      "home": {
+        "title": "SC Agents",
+        "createLabel": "Create a new SC Agent",
+        "createOrEditLabel": "Create or edit a SC Agent"
+      },
+      "created": "A new SC Agent is created with identifier {{ param }}",
+      "updated": "A SC Agent is updated with identifier {{ param }}",
+      "deleted": "A SC Agent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete SC Agent {{ id }}?"
+      },
+      "detail": {
+        "title": "SC Agent"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "mobilePhone": "Mobile Phone",
+      "email": "Email",
+      "scCodeCitizen": "Sc Code Citizen",
+      "iban": "Iban",
+      "expireDateSContract": "Expire Date S Contract",
+      "client": "Client"
+    }
+  }
+}
