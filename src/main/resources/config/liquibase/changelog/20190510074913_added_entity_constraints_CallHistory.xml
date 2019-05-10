@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity CallHistory.
+    -->
+    <changeSet id="20190510074913-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="call_id"
+                                 baseTableName="call_history"
+                                 constraintName="fk_call_history_call_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="call"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sCAgent">
+            <h2><span jhiTranslate="jhtestappApp.sCAgent.detail.title">SC Agent</span> {{sCAgent.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{sCAgent.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{sCAgent.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.mobilePhone">Mobile Phone</span></dt>
+                <dd>
+                    <span>{{sCAgent.mobilePhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.email">Email</span></dt>
+                <dd>
+                    <span>{{sCAgent.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.scCodeCitizen">Sc Code Citizen</span></dt>
+                <dd>
+                    <span>{{sCAgent.scCodeCitizen}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.iban">Iban</span></dt>
+                <dd>
+                    <span>{{sCAgent.iban}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.sCAgent.expireDateSContract">Expire Date S Contract</span></dt>
+                <dd>
+                    <span>{{sCAgent.expireDateSContract}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sc-agent-sc-ag', sCAgent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="client">
+            <h2><span jhiTranslate="jhtestappApp.client.detail.title">Client</span> {{client.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhtestappApp.client.denomination">Denomination</span></dt>
+                <dd>
+                    <span>{{client.denomination}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.vatCode">Vat Code</span></dt>
+                <dd>
+                    <span>{{client.vatCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.webSite">Web Site</span></dt>
+                <dd>
+                    <span>{{client.webSite}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.notes">Notes</span></dt>
+                <dd>
+                    <span>{{client.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.dateAdded">Date Added</span></dt>
+                <dd>
+                    <span>{{client.dateAdded}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.dateExpire">Date Expire</span></dt>
+                <dd>
+                    <span>{{client.dateExpire}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.state">State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhtestappApp.ClientState.' + client.state}}">{{client.state}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.dateState">Date State</span></dt>
+                <dd>
+                    <span>{{client.dateState}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.notesState">Notes State</span></dt>
+                <dd>
+                    <span>{{client.notesState}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.sCAgent">S C Agent</span></dt>
+                <dd>
+                    <div *ngIf="client.sCAgentId">
+                        <a [routerLink]="['/sc-agent-sc-ag', client.sCAgentId, 'view']">{{client.sCAgentId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.client.call">Call</span></dt>
+                <dd>
+                    <div *ngIf="client.callId">
+                        <a [routerLink]="['/call-sc-ag', client.callId, 'view']">{{client.callId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/client-sc-ag', client.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

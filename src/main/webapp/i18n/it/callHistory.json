@@ -1,0 +1,24 @@
+{
+  "jhtestappApp": {
+    "callHistory": {
+      "home": {
+        "title": "CallHistories",
+        "createLabel": "Genera un nuovo Call History",
+        "createOrEditLabel": "Genera o modifica un Call History"
+      },
+      "created": "&Egrave; stato generato un nuovo Call History con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Call History identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Call History con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Call History {{ id }}?"
+      },
+      "detail": {
+        "title": "Call History"
+      },
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "action": "Action",
+      "call": "Call"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "jhtestappApp": {
+    "client": {
+      "home": {
+        "title": "Clients",
+        "createLabel": "Genera un nuovo Client",
+        "createOrEditLabel": "Genera o modifica un Client"
+      },
+      "created": "&Egrave; stato generato un nuovo Client con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Client identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Client con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Client {{ id }}?"
+      },
+      "detail": {
+        "title": "Client"
+      },
+      "denomination": "Denomination",
+      "vatCode": "Vat Code",
+      "webSite": "Web Site",
+      "notes": "Notes",
+      "dateAdded": "Date Added",
+      "dateExpire": "Date Expire",
+      "state": "State",
+      "dateState": "Date State",
+      "notesState": "Notes State",
+      "sCAgent": "S C Agent",
+      "call": "Call"
+    }
+  }
+}

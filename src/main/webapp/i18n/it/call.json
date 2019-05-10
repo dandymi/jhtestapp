@@ -1,0 +1,23 @@
+{
+  "jhtestappApp": {
+    "call": {
+      "home": {
+        "title": "Calls",
+        "createLabel": "Genera un nuovo Call",
+        "createOrEditLabel": "Genera o modifica un Call"
+      },
+      "created": "&Egrave; stato generato un nuovo Call con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Call identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Call con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Call {{ id }}?"
+      },
+      "detail": {
+        "title": "Call"
+      },
+      "dateCall": "Date Call",
+      "stateCall": "State Call",
+      "history": "History"
+    }
+  }
+}

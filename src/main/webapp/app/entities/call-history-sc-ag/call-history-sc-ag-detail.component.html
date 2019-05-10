@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="callHistory">
+            <h2><span jhiTranslate="jhtestappApp.callHistory.detail.title">Call History</span> {{callHistory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhtestappApp.callHistory.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{callHistory.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.callHistory.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{callHistory.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.callHistory.action">Action</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhtestappApp.ClientAction.' + callHistory.action}}">{{callHistory.action}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhtestappApp.callHistory.call">Call</span></dt>
+                <dd>
+                    <div *ngIf="callHistory.callId">
+                        <a [routerLink]="['/call-sc-ag', callHistory.callId, 'view']">{{callHistory.callId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/call-history-sc-ag', callHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

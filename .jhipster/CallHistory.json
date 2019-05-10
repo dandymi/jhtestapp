@@ -1,0 +1,40 @@
+{
+    "name": "CallHistory",
+    "fields": [
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "action",
+            "fieldType": "ClientAction",
+            "fieldValues": "FIRST_MAIL,SECOND_MAIL,CALL,REJECT"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "call",
+            "otherEntityName": "call",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190510074913",
+    "javadoc": "Call History entity.\n@author DM",
+    "entityTableName": "call_history",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "scAg"
+}

@@ -1,0 +1,117 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-client-sc-ag-heading" jhiTranslate="jhtestappApp.client.home.createOrEditLabel">Create or edit a Client</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!client.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.denomination" for="field_denomination">Denomination</label>
+                    <input type="text" class="form-control" name="denomination" id="field_denomination"
+                           formControlName="denomination"/>
+                    <div *ngIf="editForm.get('denomination').invalid && (editForm.get('denomination').dirty || editForm.get('denomination').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('denomination').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.vatCode" for="field_vatCode">Vat Code</label>
+                    <input type="text" class="form-control" name="vatCode" id="field_vatCode"
+                           formControlName="vatCode"/>
+                    <div *ngIf="editForm.get('vatCode').invalid && (editForm.get('vatCode').dirty || editForm.get('vatCode').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('vatCode').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.webSite" for="field_webSite">Web Site</label>
+                    <input type="text" class="form-control" name="webSite" id="field_webSite"
+                           formControlName="webSite"/>
+                    <div *ngIf="editForm.get('webSite').invalid && (editForm.get('webSite').dirty || editForm.get('webSite').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('webSite').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.notes" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                           formControlName="notes"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.dateAdded" for="field_dateAdded">Date Added</label>
+                    <div class="input-group">
+                        <input id="field_dateAdded" type="text" class="form-control" name="dateAdded" ngbDatepicker  #dateAddedDp="ngbDatepicker" formControlName="dateAdded"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateAddedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.dateExpire" for="field_dateExpire">Date Expire</label>
+                    <div class="input-group">
+                        <input id="field_dateExpire" type="text" class="form-control" name="dateExpire" ngbDatepicker  #dateExpireDp="ngbDatepicker" formControlName="dateExpire"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateExpireDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.state" for="field_state">State</label>
+                    <select class="form-control" name="state" formControlName="state" id="field_state">
+                        <option value="EVALUATING">{{'jhtestappApp.ClientState.EVALUATING' | translate}}</option>
+                        <option value="APPROVED">{{'jhtestappApp.ClientState.APPROVED' | translate}}</option>
+                        <option value="NOT_APPROVED">{{'jhtestappApp.ClientState.NOT_APPROVED' | translate}}</option>
+                        <option value="ARCHIVED">{{'jhtestappApp.ClientState.ARCHIVED' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.dateState" for="field_dateState">Date State</label>
+                    <div class="input-group">
+                        <input id="field_dateState" type="text" class="form-control" name="dateState" ngbDatepicker  #dateStateDp="ngbDatepicker" formControlName="dateState"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateStateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.notesState" for="field_notesState">Notes State</label>
+                    <input type="text" class="form-control" name="notesState" id="field_notesState"
+                           formControlName="notesState"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.sCAgent" for="field_sCAgent">S C Agent</label>
+                    <select class="form-control" id="field_sCAgent" name="sCAgent" formControlName="sCAgentId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sCAgentOption.id" *ngFor="let sCAgentOption of scagents; trackBy: trackSCAgentById">{{sCAgentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhtestappApp.client.call" for="field_call">Call</label>
+                    <select class="form-control" id="field_call" name="call" formControlName="callId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="callOption.id" *ngFor="let callOption of calls; trackBy: trackCallById">{{callOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

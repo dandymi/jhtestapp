@@ -1,0 +1,33 @@
+{
+    "name": "Call",
+    "fields": [
+        {
+            "fieldName": "dateCall",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "stateCall",
+            "fieldType": "CallState",
+            "fieldValues": "NEW,WAITING,POS_CLOSED,NEG_CLOSED,MANAGING"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "callHistory",
+            "otherEntityRelationshipName": "call",
+            "relationshipName": "history"
+        }
+    ],
+    "changelogDate": "20190510074912",
+    "javadoc": "Call entity.\n@author DM",
+    "entityTableName": "call",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "scAg"
+}

@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhtestappApp.callHistory.home.title">Call Histories</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-call-history-sc-ag" [routerLink]="['/call-history-sc-ag/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhtestappApp.callHistory.home.createLabel">
+            Create new Call History
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="callHistories">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="jhtestappApp.callHistory.startDate">Start Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="jhtestappApp.callHistory.endDate">End Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="action"><span jhiTranslate="jhtestappApp.callHistory.action">Action</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="callId"><span jhiTranslate="jhtestappApp.callHistory.call">Call</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let callHistory of callHistories ;trackBy: trackId">
+                <td><a [routerLink]="['/call-history-sc-ag', callHistory.id, 'view' ]">{{callHistory.id}}</a></td>
+                <td>{{callHistory.startDate | date:'medium'}}</td>
+                <td>{{callHistory.endDate | date:'medium'}}</td>
+                <td jhiTranslate="{{'jhtestappApp.ClientAction.' + callHistory.action}}">{{callHistory.action}}</td>
+                <td>
+                    <div *ngIf="callHistory.callId">
+                        <a [routerLink]="['../call-sc-ag', callHistory.callId , 'view' ]" >{{callHistory.callId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/call-history-sc-ag', callHistory.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/call-history-sc-ag', callHistory.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'call-history-sc-ag', { outlets: { popup: callHistory.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+/**
+ * Sixth Continent Agent entity.
+ * @author DM
+ */
+ entity SCAgent {
+	firstName String required,
+    lastName String required,
+    mobilePhone String,
+    email String required,
+    scCodeCitizen String,
+    iban String,
+    expireDateSContract LocalDate
+}
+
+enum ClientState {
+    EVALUATING, APPROVED, NOT_APPROVED, ARCHIVED
+}
+
+enum ClientAction {
+	FIRST_MAIL, SECOND_MAIL, CALL, REJECT
+}
+
+enum CallState {
+	NEW, WAITING, POS_CLOSED, NEG_CLOSED, MANAGING
+}
+
+/**
+ * Client entity.
+ * @author DM
+ */
+entity Client {
+	denomination String required,
+    vatCode String required,
+    webSite String required,
+    notes String,
+    dateAdded LocalDate,
+    dateExpire LocalDate,
+    state ClientState,
+    dateState LocalDate
+    notesState String
+}
+
+/**
+ * Call entity.
+ * @author DM
+ */
+entity Call {
+	dateCall LocalDate,
+	stateCall CallState
+}
+
+/**
+ * Call History entity.
+ * @author DM
+ */
+entity CallHistory {
+	startDate Instant required,
+    endDate Instant,
+    action ClientAction
+}
+
+relationship OneToMany {
+	SCAgent{client} to Client
+}
+
+relationship OneToOne {
+	Client{call} to Call
+}
+
+relationship OneToMany {
+	Call{history} to CallHistory
+}
+
+
+//relationship ManyToMany {
+//	Job{task(title)} to Task{job}
+//}
+
+// defining multiple OneToMany relationships with comments
+//relationship OneToMany {
+//	Employee{job} to Job,
+	/**
+	* A relationship
+	*/
+//	Department{employee} to
+	/**
+	* Another side of the same relationship
+	*/
+//	Employee
+// }
+
+//relationship ManyToOne {
+//	Employee{manager} to Employee
+// }
+
+// defining multiple oneToOne relationships
+// relationship OneToOne {
+//	JobHistory{job} to Job,
+//	JobHistory{department} to Department,
+//	JobHistory{employee} to Employee
+// }
+
+// Set pagination options
+paginate CallHistory, Client with infinite-scroll
+paginate SCAgent with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl // except Employee, Job
+// Set an angular suffix
+angularSuffix * with scAg

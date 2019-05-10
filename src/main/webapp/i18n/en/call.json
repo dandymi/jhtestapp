@@ -1,0 +1,23 @@
+{
+  "jhtestappApp": {
+    "call": {
+      "home": {
+        "title": "Calls",
+        "createLabel": "Create a new Call",
+        "createOrEditLabel": "Create or edit a Call"
+      },
+      "created": "A new Call is created with identifier {{ param }}",
+      "updated": "A Call is updated with identifier {{ param }}",
+      "deleted": "A Call is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Call {{ id }}?"
+      },
+      "detail": {
+        "title": "Call"
+      },
+      "dateCall": "Date Call",
+      "stateCall": "State Call",
+      "history": "History"
+    }
+  }
+}

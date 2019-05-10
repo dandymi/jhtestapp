@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhtestappApp.sCAgent.home.title">SC Agents</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-sc-agent-sc-ag" [routerLink]="['/sc-agent-sc-ag/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhtestappApp.sCAgent.home.createLabel">
+            Create new SC Agent
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="sCAgents">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="jhtestappApp.sCAgent.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="jhtestappApp.sCAgent.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mobilePhone"><span jhiTranslate="jhtestappApp.sCAgent.mobilePhone">Mobile Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span jhiTranslate="jhtestappApp.sCAgent.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="scCodeCitizen"><span jhiTranslate="jhtestappApp.sCAgent.scCodeCitizen">Sc Code Citizen</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="iban"><span jhiTranslate="jhtestappApp.sCAgent.iban">Iban</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="expireDateSContract"><span jhiTranslate="jhtestappApp.sCAgent.expireDateSContract">Expire Date S Contract</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sCAgent of sCAgents ;trackBy: trackId">
+                <td><a [routerLink]="['/sc-agent-sc-ag', sCAgent.id, 'view' ]">{{sCAgent.id}}</a></td>
+                <td>{{sCAgent.firstName}}</td>
+                <td>{{sCAgent.lastName}}</td>
+                <td>{{sCAgent.mobilePhone}}</td>
+                <td>{{sCAgent.email}}</td>
+                <td>{{sCAgent.scCodeCitizen}}</td>
+                <td>{{sCAgent.iban}}</td>
+                <td>{{sCAgent.expireDateSContract | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/sc-agent-sc-ag', sCAgent.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/sc-agent-sc-ag', sCAgent.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'sc-agent-sc-ag', { outlets: { popup: sCAgent.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="sCAgents && sCAgents.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
